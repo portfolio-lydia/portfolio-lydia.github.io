@@ -1,0 +1,29 @@
+:root {
+  --spacing: 10px;
+  --blur: 10px;
+  --base: #7B5045;
+}
+
+img {
+  padding: var(--spacing);
+  background: var(--base);
+  filter: blur(var(--blur));
+}
+
+.hl {
+  color: var(--base);
+
+}
+
+body {
+  text-align: center;
+  background: #5dbcd2;
+  color: #24262a;
+  font-family: "Langar", cursive;
+  font-size: 20px;
+  font-weight: 100;
+}
+
+.controls {
+  margin-bottom: 50px;
+}

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Countdown to 2021</title>
+    <meta name="description" content="ticking clock and countdown to 2021, with Leiden set as a background" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue" rel="stylesheet">
+  </head>
+  <body>
+    <h2>Wie kan er ook niet wachten tot 2020 voorbij is?</h2>
+    
+    
+
+     <div class="clock">
+      <div class="clock-face">
+        <div class="hand hour-hand"></div>
+        <div class="hand min-hand"></div>
+        <div class="hand second-hand"></div>
+      </div>
+    </div>
+    <iframe src="http://free.timeanddate.com/countdown/i7llt29d/n1306/cf12/cm0/cu4/ct0/cs0/ca0/cr0/ss0/cac000/cpc000/pcfff/tcfff/fs100/szw320/szh135/tatCountdown%20to%202021/tac000/tptTime%20passed%20%20%20/tpc000/mac000/mpc000/iso2020-12-31T00:00:00" allowtransparency="true" frameborder="0" width="176" height="69"></iframe> 
+    
+    <script>
+      const secondHand = document.querySelector(".second-hand");
+      const minsHand = document.querySelector(".min-hand");
+      const hourHand = document.querySelector(".hour-hand");
+
+      function setDate() {
+        const now = new Date();
+
+        const seconds = now.getSeconds();
+        const secondsDegrees = (seconds / 60) * 360 + 90;
+        secondHand.style.transform = `rotate(${secondsDegrees}deg)`;
+
+        const mins = now.getMinutes();
+        const minsDegrees = (mins / 60) * 360 + (seconds / 60) * 6 + 90;
+        minsHand.style.transform = `rotate(${minsDegrees}deg)`;
+
+        const hour = now.getHours();
+        const hourDegrees = (hour / 12) * 360 + (mins / 60) * 30 + 90;
+        hourHand.style.transform = `rotate(${hourDegrees}deg)`;
+      }
+
+      setInterval(setDate, 1000);
+
+      setDate();
+    </script> 
+  </body>
+</html>
