@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Movie Database</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <form class="search-form">
+      <input type="text" class="search" placeholder="Find A Movie" />
+      <ul class="suggestions">
+        <li>Search for a movie</li>
+        <li>Just type a word that's in the movie title</li>
+      </ul>
+    </form>
+    <script>
+      const endpoint =
+        "https://raw.githubusercontent.com/prust/wikipedia-movie-data/master/movies.json";
+
+      const movies = [];
+      fetch(endpoint)
+        .then((result) => result.json())
+        .then((data) => movies.push(...data));
+
+      function findMatches(wordToMatch, movies) {
+        return movies.filter((movie) => {
+          const regex = new RegExp(wordToMatch, "gi");
+          return movie.title.match(regex) && movie.year > 1950 
+        });
+      }
+
+      function displayMatches() {
+        if (this.value) {
+        const matchArray = findMatches(this.value, movies);
+        const html = matchArray
+          .map((movie) => {
+            const regex = new RegExp(this.value, "gi");
+            const movieTitle = movie.title.replace(
+              regex,
+              `<span class="hl">${this.value}</span>`
+            );
+
+            return `
+      <li>
+        <span class="name">${movieTitle}</span>
+        <span class="population">${movie.year}</span>
+      </li>
+    `;
+          })
+          .join("");
+        suggestions.innerHTML = html}
+        else {suggestions.innerHTML = ""}
+      }
+
+      const searchInput = document.querySelector(".search");
+      const suggestions = document.querySelector(".suggestions");
+
+      searchInput.addEventListener("change", displayMatches);
+      searchInput.addEventListener("keyup", displayMatches);
+    </script>
+  </body>
+</html>
