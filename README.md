@@ -1,4 +1,5 @@
-# portfolio
+# portfolio Lydia van Gammeren
+
 vanilla JavaScript and React projects
 
 This portfolio contains my vanilla JavaScript projects that are based on the JavaScript 30 challenge by Wes Bos. I had fun making small tweaks to them!
